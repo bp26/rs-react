@@ -5,27 +5,26 @@ class Search extends React.Component<Record<string, never>, ISearchState> {
   constructor(props: Record<string, never>) {
     super(props);
     this.state = {
-      query: '',
+      query: this.getLSQuery(),
     };
 
     this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
     this.setLSQuery = this.setLSQuery.bind(this);
-    this.getLSQuery = this.getLSQuery.bind(this);
   }
 
   public componentDidMount(): void {
-    this.getLSQuery();
+    window.onbeforeunload = () => this.setLSQuery;
   }
 
   public componentWillUnmount(): void {
     this.setLSQuery();
+    window.onbeforeunload = () => null;
   }
 
-  private getLSQuery(): void {
+  private getLSQuery(): string {
     const query = localStorage.getItem('query');
-    console.log(query);
-    query ? this.setState({ query }) : this.setState({ query: '' });
+    return query ? query : '';
   }
 
   private setLSQuery(): void {
@@ -44,7 +43,7 @@ class Search extends React.Component<Record<string, never>, ISearchState> {
   public render() {
     return (
       <form className="search" onSubmit={this.submit}>
-        <input type="text" onChange={this.onChange} />
+        <input type="text" value={this.state.query} onChange={this.onChange} />
         <input type="submit" value="Submit" />
       </form>
     );
