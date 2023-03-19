@@ -6,8 +6,12 @@ export interface ISearchState {
   query: string;
 }
 
+export interface ICardsListProps {
+  data: ICharacter[];
+}
+
 export interface ICardProps {
-  character: ICharacter;
+  item: ICharacter;
 }
 
 export interface ICharacter {

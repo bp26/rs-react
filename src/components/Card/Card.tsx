@@ -15,16 +15,16 @@ class Card extends React.Component<ICardProps> {
   public render() {
     return (
       <div className={styles.card}>
-        <img className={styles.image} src={this.props.character.image}></img>
-        <div className={styles.name}>{this.props.character.name}</div>
+        <img className={styles.image} src={this.props.item.image}></img>
+        <div className={styles.name}>{this.props.item.name}</div>
         <div className={styles.bottom}>
           <img
             className={styles.bottomImage}
-            src={this.props.character.status === CharacterStatus.ALIVE ? aliveImage : deadImage}
+            src={this.props.item.status === CharacterStatus.ALIVE ? aliveImage : deadImage}
           ></img>
           <img
             className={styles.bottomImage}
-            src={this.props.character.species === CharacterSpecies.HUMAN ? humanImage : alienImage}
+            src={this.props.item.species === CharacterSpecies.HUMAN ? humanImage : alienImage}
           ></img>
         </div>
       </div>
