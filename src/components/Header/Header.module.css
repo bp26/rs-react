@@ -1,7 +1,33 @@
 .header {
+  height: 60px;
+  padding: 0 60px 0 60px;
+
   display: flex;
   align-items: center;
-  height: 80px;
-  background-color: aquamarine;
+  gap: 20%;
+
+  background-color: #1f2023;
   border-bottom: 1px solid slategray;
+
+  color: white;
+}
+
+.name {
+  user-select: none;
+  color: #991788;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+.link:hover {
+  color: #ff1fe3;
 }
