@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Error.module.css';
 
 class ErrorPage extends React.Component {
   constructor(props: Record<string, never>) {
@@ -7,8 +8,8 @@ class ErrorPage extends React.Component {
 
   render() {
     return (
-      <div className="error">
-        <h1>Error</h1>
+      <div className={[styles.error, 'page'].join(' ')}>
+        <h1 className={styles.message}>404</h1>
       </div>
     );
   }
