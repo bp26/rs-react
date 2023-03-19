@@ -15,8 +15,10 @@ class Card extends React.Component<ICardProps> {
   public render() {
     return (
       <div className={styles.card}>
-        <img className={styles.image} src={this.props.item.image}></img>
-        <div className={styles.name}>{this.props.item.name}</div>
+        <img className={styles.image} src={this.props.item.image} data-testid="card-image"></img>
+        <div className={styles.name} data-testid="card-name">
+          {this.props.item.name}
+        </div>
         <div className={styles.bottom}>
           <img
             className={styles.bottomImage}

@@ -24,12 +24,15 @@ class Header extends React.Component<Record<string, never>, IHeaderState> {
   public render(): JSX.Element {
     return (
       <div className={styles.header}>
-        <h1 className={styles.name}>{this.state.page}</h1>
+        <h1 className={styles.name} data-testid="header-name">
+          {this.state.page}
+        </h1>
         <nav className={styles.navigation}>
           <NavLink
             className={styles.link}
             to={'/'}
             onClick={() => this.setPage(HeaderPageName.MAIN)}
+            data-testid="header-mainlink"
           >
             Main
           </NavLink>
@@ -37,6 +40,7 @@ class Header extends React.Component<Record<string, never>, IHeaderState> {
             className={styles.link}
             to={'/about'}
             onClick={() => this.setPage(HeaderPageName.ABOUT)}
+            data-testid="header-aboutlink"
           >
             About
           </NavLink>

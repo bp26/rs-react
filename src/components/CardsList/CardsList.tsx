@@ -12,7 +12,7 @@ class CardsList extends React.Component<ICardsListProps> {
     return (
       <ul className={styles.list}>
         {this.props.data.map((item) => (
-          <li className={styles.item} key={item.id}>
+          <li className={styles.item} key={item.id} data-testid="cardsList-item">
             <Card item={item} />
           </li>
         ))}

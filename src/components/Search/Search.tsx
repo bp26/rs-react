@@ -49,6 +49,7 @@ class Search extends React.Component<Record<string, never>, ISearchState> {
           type="text"
           value={this.state.query}
           onChange={this.onChange}
+          data-testid="search-input"
         />
         <input className={styles.button} type="submit" value="Submit" />
       </form>
