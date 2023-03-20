@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
-import { IHeaderState } from 'types/interfaces';
 import { HeaderPageName } from '../../types/enums';
+
+export interface IHeaderState {
+  page: string;
+}
 
 class Header extends React.Component<Record<string, never>, IHeaderState> {
   constructor(props: Record<string, never>) {

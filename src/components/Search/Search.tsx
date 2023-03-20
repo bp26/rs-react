@@ -1,6 +1,9 @@
 import React from 'react';
 import styles from './Search.module.css';
-import { ISearchState } from 'types/interfaces';
+
+export interface ISearchState {
+  query: string;
+}
 
 class Search extends React.Component<Record<string, never>, ISearchState> {
   constructor(props: Record<string, never>) {

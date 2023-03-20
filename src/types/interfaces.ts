@@ -1,19 +1,3 @@
-export interface IHeaderState {
-  page: string;
-}
-
-export interface ISearchState {
-  query: string;
-}
-
-export interface ICardsListProps {
-  data: ICharacter[];
-}
-
-export interface ICardProps {
-  item: ICharacter;
-}
-
 export interface ICharacter {
   id: number;
   name: string;

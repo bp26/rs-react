@@ -1,11 +1,15 @@
 import React from 'react';
 import { CharacterSpecies, CharacterStatus } from '../../types/enums';
-import { ICardProps } from 'types/interfaces';
+import { ICharacter } from 'types/interfaces';
 import styles from './Card.module.css';
 import aliveImage from '../../assets/images/alive.png';
 import deadImage from '../../assets/images/dead.png';
 import alienImage from '../../assets/images/alien.png';
 import humanImage from '../../assets/images/human.png';
+
+export interface ICardProps {
+  item: ICharacter;
+}
 
 class Card extends React.Component<ICardProps> {
   constructor(props: ICardProps) {
