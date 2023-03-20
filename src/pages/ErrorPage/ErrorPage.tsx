@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Error.module.css';
+import styles from './ErrorPage.module.css';
 
 class ErrorPage extends React.Component {
   constructor(props: Record<string, never>) {

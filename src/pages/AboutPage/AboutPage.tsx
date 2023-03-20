@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './About.module.css';
+import styles from './AboutPage.module.css';
 
-class About extends React.Component {
+class AboutPage extends React.Component {
   constructor(props: Record<string, never>) {
     super(props);
   }
@@ -19,4 +19,4 @@ class About extends React.Component {
   }
 }
 
-export default About;
+export default AboutPage;

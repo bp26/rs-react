@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './Main.module.css';
+import styles from './MainPage.module.css';
 import Search from '../../components/Search/Search';
 import CardsList from '../../components/CardsList/CardsList';
 import characters from '../../assets/data/characters';
 
-class Main extends React.Component {
+class MainPage extends React.Component {
   constructor(props: Record<string, never>) {
     super(props);
   }
@@ -19,4 +19,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default MainPage;
