@@ -4,7 +4,7 @@ import { describe, it } from 'vitest';
 import Search from './Search';
 
 describe('Search', () => {
-  it('Renders card image', () => {
+  it('Saves input value on unmount', () => {
     const { unmount } = render(<Search />);
     const input = screen.getByTestId('search-input');
     expect(input).toContainHTML('');
