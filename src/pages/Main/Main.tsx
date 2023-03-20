@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Main.module.css';
-import Search from '../Search/Search';
+import Search from '../../components/Search/Search';
 import CardsList from '../../components/CardsList/CardsList';
 import characters from '../../assets/data/characters';
 
