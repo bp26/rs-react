@@ -3,7 +3,7 @@ import styles from './CardsList.module.css';
 import Card from '../Card/Card';
 import { ICharacter } from 'types/interfaces';
 
-export interface ICardsListProps {
+interface ICardsListProps {
   data: ICharacter[];
 }
 

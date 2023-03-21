@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Search.module.css';
 
-export interface ISearchState {
+interface ISearchState {
   query: string;
 }
 

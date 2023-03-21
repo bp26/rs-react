@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
 import { HeaderPageName } from '../../types/enums';
 
-export interface IHeaderState {
+interface IHeaderState {
   page: string;
 }
 

@@ -7,7 +7,7 @@ import deadImage from '../../assets/images/dead.png';
 import alienImage from '../../assets/images/alien.png';
 import humanImage from '../../assets/images/human.png';
 
-export interface ICardProps {
+interface ICardProps {
   item: ICharacter;
 }
 
