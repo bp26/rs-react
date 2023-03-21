@@ -17,7 +17,16 @@ class Header extends React.Component<Record<string, never>, IHeaderState> {
 
   private getPage() {
     const location = window.location.pathname;
-    return location === '/' ? HeaderPageName.MAIN : HeaderPageName.ABOUT;
+    switch (location) {
+      case '/':
+        return HeaderPageName.MAIN;
+      case '/about':
+        return HeaderPageName.ABOUT;
+      case '/forms':
+        return HeaderPageName.FORMS;
+      default:
+        return HeaderPageName.ERROR;
+    }
   }
 
   private setPage(page: string) {
@@ -46,6 +55,14 @@ class Header extends React.Component<Record<string, never>, IHeaderState> {
             data-testid="header-aboutlink"
           >
             About
+          </NavLink>
+          <NavLink
+            className={styles.link}
+            to={'/forms'}
+            onClick={() => this.setPage(HeaderPageName.FORMS)}
+            data-testid="header-formslink"
+          >
+            Forms
           </NavLink>
         </nav>
       </div>

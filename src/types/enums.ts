@@ -1,6 +1,8 @@
 export const HeaderPageName = {
   MAIN: 'Main',
   ABOUT: 'About',
+  FORMS: 'Forms',
+  ERROR: 'Error',
 };
 
 export const CharacterStatus = {

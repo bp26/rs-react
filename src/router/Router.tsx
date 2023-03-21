@@ -4,6 +4,7 @@ import MainPage from '../pages/MainPage/MainPage';
 import App from '../app/App';
 import AboutPage from '../pages/AboutPage/AboutPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
+import FormsPage from '../pages/FormsPage/FormsPage';
 
 export const routerConfig = [
   {
@@ -18,6 +19,10 @@ export const routerConfig = [
       {
         path: 'about',
         element: <AboutPage />,
+      },
+      {
+        path: 'forms',
+        element: <FormsPage />,
       },
     ],
   },
