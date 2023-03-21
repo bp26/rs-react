@@ -1,16 +1,29 @@
 import React from 'react';
 import { joinClassNames } from '../../utils/utils';
 import styles from './FormsPage.module.css';
+import Form from '../../components/Form/Form';
+import { IFormsCard } from 'types/interfaces';
 
-class FormsPage extends React.Component {
+interface IFormsPageState {
+  cards: IFormsCard[];
+}
+
+class FormsPage extends React.Component<Record<string, never>, IFormsPageState> {
   constructor(props: Record<string, never>) {
     super(props);
+    this.state = {
+      cards: [],
+    };
+  }
+
+  private createCard(card: IFormsCard) {
+    this.setState({ cards: [...this.state.cards, card] });
   }
 
   render() {
     return (
       <div className={joinClassNames(styles.forms, 'page')}>
-        <span>Forms</span>
+        <Form createCard={this.createCard.bind(this)} />
       </div>
     );
   }
