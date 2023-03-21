@@ -5,7 +5,7 @@ import App from '../app/App';
 import AboutPage from '../pages/AboutPage/AboutPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 
-const router = createBrowserRouter([
+export const routerConfig = [
   {
     path: '/',
     element: <App />,
@@ -21,6 +21,8 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
+
+const router = createBrowserRouter(routerConfig);
 
 export default router;
