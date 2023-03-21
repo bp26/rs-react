@@ -1,4 +1,4 @@
-export interface ICharacter {
+export interface IMainCard {
   id: number;
   name: string;
   status: string;
@@ -11,4 +11,8 @@ export interface ICharacter {
   };
   image: string;
   episode: string[];
+}
+
+export interface IFormsCard {
+  name: string;
 }

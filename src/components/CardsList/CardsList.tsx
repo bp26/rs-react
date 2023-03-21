@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './CardsList.module.css';
 import Card from '../Card/Card';
-import { ICharacter } from 'types/interfaces';
+import { IMainCard } from 'types/interfaces';
 
 interface ICardsListProps {
-  data: ICharacter[];
+  data: IMainCard[];
 }
 
 class CardsList extends React.Component<ICardsListProps> {
