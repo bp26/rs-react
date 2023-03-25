@@ -5,12 +5,25 @@ export const HeaderPageName = {
   ERROR: 'Error',
 };
 
-export const CharacterStatus = {
-  ALIVE: 'Alive',
-  DEAD: 'Dead',
-};
+export const enum CharacterStatus {
+  ALIVE = 'Alive',
+  DEAD = 'Dead',
+}
 
-export const CharacterSpecies = {
-  ALIEN: 'Alien',
-  HUMAN: 'Human',
-};
+export const enum CharacterSpecies {
+  ALIEN = 'Alien',
+  HUMAN = 'Human',
+}
+
+export const enum Language {
+  RU = 'Russian',
+  EN = 'English',
+  BE = 'Belarussian',
+}
+
+export const enum ValidationError {
+  NAME = 'nameError',
+  EMAIL = 'emailError',
+  CHECKBOX = 'checkboxError',
+  BIRTHDAY = 'birthdayError',
+}
