@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.label {
+  margin-bottom: 10px;
+}
+
+.input {
+  outline: none;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.invalid {
+  border-color: red;
+}
