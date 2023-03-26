@@ -4,7 +4,7 @@ export const SIMPLE_INPUTS = [
   {
     id: 1,
     type: 'text',
-    name: 'Full Name',
+    name: 'Full Name:',
     key: 'name',
     error: 'nameError',
     validation: validateName,
@@ -12,7 +12,7 @@ export const SIMPLE_INPUTS = [
   {
     id: 2,
     type: 'email',
-    name: 'Email',
+    name: 'Email:',
     key: 'email',
     error: 'emailError',
     validation: validateEmail,
@@ -20,7 +20,7 @@ export const SIMPLE_INPUTS = [
   {
     id: 3,
     type: 'date',
-    name: 'Date of birth',
+    name: 'Date of birth:',
     key: 'birthday',
     error: 'birthdayError',
     validation: validateBirthday,

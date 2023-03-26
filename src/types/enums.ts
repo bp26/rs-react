@@ -22,4 +22,5 @@ export const enum ValidationError {
   BIRTHDAY = 'birthdayError',
   LANGUAGE = 'languageError',
   GENDER = 'genderError',
+  AVATAR = 'avatarError',
 }

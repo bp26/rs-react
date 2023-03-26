@@ -20,6 +20,7 @@ class CustomInput extends React.Component<CustomInputProps> {
     const isTextbox =
       this.props.type === 'text' || this.props.type === 'email' ? styles.textbox : '';
     const isCheckbox = this.props.type === 'checkbox' ? styles.checkbox : '';
+    const isFileUpload = this.props.type === 'file' ? '' : 'input';
 
     return (
       <fieldset className={joinClassNames(styles.fieldset)}>
@@ -28,7 +29,7 @@ class CustomInput extends React.Component<CustomInputProps> {
             {this.props.name}
           </label>
           <input
-            className={joinClassNames(styles.input, isTextbox, isInvalid, 'input')}
+            className={joinClassNames(styles.input, isTextbox, isInvalid, isFileUpload)}
             id={this.props.id}
             type={this.props.type}
             ref={this.props.reference}

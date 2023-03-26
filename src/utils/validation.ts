@@ -102,3 +102,23 @@ export const validateSwitcher = (
   setter(ValidationError.GENDER, ``);
   return true;
 };
+
+export const validateFile = (
+  filePath: string | undefined,
+  setter: (type: string, error: string) => void
+) => {
+  if (!filePath) {
+    setter(ValidationError.AVATAR, `You should choose your avatar`);
+    return false;
+  }
+
+  const correctExtensions = ['png', 'jpeg', 'jpg', 'bmp'];
+  const ext = filePath.split('.').at(-1);
+  if (ext && !correctExtensions.includes(ext)) {
+    setter(ValidationError.AVATAR, `Wrong image file type`);
+    return false;
+  }
+
+  setter(ValidationError.AVATAR, ``);
+  return true;
+};
