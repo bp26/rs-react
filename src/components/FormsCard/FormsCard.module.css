@@ -1,0 +1,23 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  color: white;
+  border: 1px solid #991788;
+  border-radius: 10px;
+}
+
+.image {
+  width: 100%;
+  max-height: 200px;
+  max-width: 200px;
+  border-radius: 10px 10px 0 0;
+}
+
+.content {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
