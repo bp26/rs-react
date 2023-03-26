@@ -15,15 +15,11 @@ export const enum CharacterSpecies {
   HUMAN = 'Human',
 }
 
-export const enum Language {
-  RU = 'Russian',
-  EN = 'English',
-  BE = 'Belarussian',
-}
-
 export const enum ValidationError {
   NAME = 'nameError',
   EMAIL = 'emailError',
   CHECKBOX = 'checkboxError',
   BIRTHDAY = 'birthdayError',
+  LANGUAGE = 'languageError',
+  GENDER = 'genderError',
 }
