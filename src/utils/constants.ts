@@ -1,6 +1,6 @@
-import { validateName, validateEmail } from './validation';
+import { validateName, validateEmail, validateBirthday } from './validation';
 
-export const FORM_INPUTS = [
+export const SIMPLE_INPUTS = [
   {
     id: 1,
     type: 'text',
@@ -23,14 +23,38 @@ export const FORM_INPUTS = [
     name: 'Date of birth',
     key: 'birthday',
     error: 'birthdayError',
-    validation: null,
+    validation: validateBirthday,
+  },
+];
+
+export const LANGUAGE_DATA = [
+  {
+    id: 1,
+    value: 'Choose an option',
+  },
+  {
+    id: 2,
+    value: 'Russian',
+  },
+  {
+    id: 3,
+    value: 'Belarussian',
   },
   {
     id: 4,
-    type: 'checkbox',
-    name: 'Consent',
-    key: 'checkbox',
-    error: 'checkboxError',
-    validation: null,
+    value: 'English',
+  },
+];
+
+export const GENDER_DATA = [
+  {
+    id: 1,
+    value: 'Male',
+    ref: 'firstOption',
+  },
+  {
+    id: 2,
+    value: 'Female',
+    ref: 'secondOption',
   },
 ];

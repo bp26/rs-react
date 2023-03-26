@@ -42,3 +42,63 @@ export const validateEmail = (
   setter(ValidationError.EMAIL, ``);
   return true;
 };
+
+export const validateBirthday = (
+  dateValue: string | undefined,
+  setter: (type: string, error: string) => void
+) => {
+  if (!dateValue) {
+    setter(ValidationError.BIRTHDAY, `Birthday field should't be empty`);
+    return false;
+  }
+
+  const date = new Date(dateValue);
+
+  if (date > new Date()) {
+    setter(ValidationError.BIRTHDAY, `Birthday shouldn't be later than the current date`);
+    return false;
+  }
+
+  setter(ValidationError.BIRTHDAY, ``);
+  return true;
+};
+
+export const validateCheckbox = (
+  checked: boolean | undefined,
+  setter: (type: string, error: string) => void
+) => {
+  if (!checked) {
+    setter(ValidationError.CHECKBOX, `You should consent to having your data processed`);
+    return false;
+  }
+
+  setter(ValidationError.CHECKBOX, ``);
+  return true;
+};
+
+export const validateSelect = (
+  value: string | undefined,
+  setter: (type: string, error: string) => void
+) => {
+  if (value === 'Choose an option') {
+    setter(ValidationError.LANGUAGE, `You should choose your language`);
+    return false;
+  }
+
+  setter(ValidationError.LANGUAGE, ``);
+  return true;
+};
+
+export const validateSwitcher = (
+  firstOption: boolean | undefined,
+  secondOption: boolean | undefined,
+  setter: (type: string, error: string) => void
+) => {
+  if (!firstOption && !secondOption) {
+    setter(ValidationError.GENDER, `You should choose your gender`);
+    return false;
+  }
+
+  setter(ValidationError.GENDER, ``);
+  return true;
+};

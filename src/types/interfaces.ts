@@ -16,3 +16,8 @@ export interface IMainCard {
 export interface IFormsCard {
   name: string;
 }
+
+export interface ISwitcherRef {
+  firstOption: React.RefObject<HTMLInputElement>;
+  secondOption: React.RefObject<HTMLInputElement>;
+}
