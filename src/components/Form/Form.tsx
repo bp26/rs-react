@@ -27,6 +27,7 @@ interface IFormState {
 }
 
 class Form extends React.Component<IFormProps, IFormState> {
+  private form = React.createRef<HTMLFormElement>();
   private name = React.createRef<HTMLInputElement>();
   private email = React.createRef<HTMLInputElement>();
   private checkbox = React.createRef<HTMLInputElement>();
@@ -57,6 +58,23 @@ class Form extends React.Component<IFormProps, IFormState> {
       ...prevState,
       [type]: error,
     }));
+  }
+
+  private resetForm() {
+    this.form.current?.reset();
+  }
+
+  private getAvatarSrc() {
+    const files = this.avatar.current!.files;
+    if (files) {
+      return URL.createObjectURL(files[0]);
+    } else {
+      return '';
+    }
+  }
+
+  private getGender() {
+    return this.maleGender.current!.checked ? 'Male' : 'Female';
   }
 
   private submit(e: React.FormEvent<HTMLInputElement>) {
@@ -90,13 +108,20 @@ class Form extends React.Component<IFormProps, IFormState> {
     }
 
     if (isValid) {
-      //alert(this.language.current?.value);
+      this.props.createCard({
+        name: this.name.current!.value,
+        email: this.email.current!.value,
+        avatar: this.getAvatarSrc(),
+        language: this.language.current!.value,
+        gender: this.getGender(),
+        date: this.birthday.current!.value,
+      });
     }
   }
 
   render() {
     return (
-      <form className={styles.form} noValidate={true}>
+      <form className={styles.form} noValidate={true} ref={this.form}>
         {SIMPLE_INPUTS.map((input) => (
           <CustomInput
             key={input.id}
@@ -136,13 +161,16 @@ class Form extends React.Component<IFormProps, IFormState> {
           reference={this.checkbox}
           error={this.state.checkboxError}
         />
-        <fieldset>
+        <fieldset className={styles.buttons}>
           <input
             className="button"
             type={'submit'}
             onClick={this.submit}
             value={'Create card'}
           ></input>
+          <button className="button" onClick={this.resetForm}>
+            Reset
+          </button>
         </fieldset>
       </form>
     );

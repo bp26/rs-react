@@ -15,6 +15,11 @@ export interface IMainCard {
 
 export interface IFormsCard {
   name: string;
+  email: string;
+  date: string;
+  language: string;
+  gender: string;
+  avatar: string;
 }
 
 export interface ISwitcherRef {
