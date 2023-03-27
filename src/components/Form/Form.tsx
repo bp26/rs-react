@@ -99,10 +99,6 @@ class Form extends React.Component<IFormProps, IFormState> {
     }
   }
 
-  private getGender() {
-    return this.maleGender.current!.checked ? 'Male' : 'Female';
-  }
-
   private submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     let isValid = true;
@@ -139,7 +135,7 @@ class Form extends React.Component<IFormProps, IFormState> {
         email: this.email.current!.value,
         avatar: this.getAvatarSrc(),
         language: this.language.current!.value,
-        gender: this.getGender(),
+        gender: this.maleGender.current!.checked ? 'Male' : 'Female',
         date: this.birthday.current!.value,
       });
       this.resetForm();
