@@ -1,23 +1,33 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  width: 100%;
 
   color: white;
   border: 1px solid #991788;
   border-radius: 10px;
+
+  background-color: #991788;
 }
 
 .image {
   width: 100%;
-  max-height: 200px;
-  max-width: 200px;
+  height: 250px;
   border-radius: 10px 10px 0 0;
 }
 
 .content {
-  padding: 5px;
+  padding: 5px 5px 2px 5px;
   display: flex;
   flex-direction: column;
   gap: 2px;
+  align-items: center;
+}
+
+.name {
+  font-size: 26px;
+  color: gold;
+  align-self: center;
+  margin: 0;
+  margin-bottom: 5px;
 }

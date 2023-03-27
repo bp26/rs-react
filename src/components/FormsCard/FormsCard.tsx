@@ -17,11 +17,11 @@ class FormsCard extends React.Component<IFormsCardProps> {
       <div className={styles.card}>
         <img className={styles.image} src={this.props.item.avatar}></img>
         <div className={styles.content}>
-          <span>{this.props.item.name}</span>
-          <span>{this.props.item.email}</span>
-          <span>{this.props.item.date}</span>
-          <span>{this.props.item.gender}</span>
-          <span>{this.props.item.language}</span>
+          <h3 className={styles.name}>{this.props.item.name}</h3>
+          <span>Gender: {this.props.item.gender}</span>
+          <span>Birthday: {this.props.item.date}</span>
+          <span>Language: {this.props.item.language}</span>
+          <span>Email: {this.props.item.email}</span>
         </div>
       </div>
     );

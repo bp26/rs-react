@@ -55,3 +55,8 @@ fieldset {
   color: white;
   background-color: #991788;
 }
+
+.button:hover {
+  cursor: pointer;
+  background-color: #c30dab;
+}
