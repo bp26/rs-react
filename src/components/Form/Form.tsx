@@ -77,7 +77,7 @@ class Form extends React.Component<IFormProps, IFormState> {
     return this.maleGender.current!.checked ? 'Male' : 'Female';
   }
 
-  private submit(e: React.FormEvent<HTMLInputElement>) {
+  private submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     let isValid = true;
 
@@ -116,12 +116,13 @@ class Form extends React.Component<IFormProps, IFormState> {
         gender: this.getGender(),
         date: this.birthday.current!.value,
       });
+      this.resetForm();
     }
   }
 
   render() {
     return (
-      <form className={styles.form} noValidate={true} ref={this.form}>
+      <form onSubmit={this.submit} className={styles.form} noValidate={true} ref={this.form}>
         {SIMPLE_INPUTS.map((input) => (
           <CustomInput
             key={input.id}
@@ -162,15 +163,8 @@ class Form extends React.Component<IFormProps, IFormState> {
           error={this.state.checkboxError}
         />
         <fieldset className={styles.buttons}>
-          <input
-            className="button"
-            type={'submit'}
-            onClick={this.submit}
-            value={'Create card'}
-          ></input>
-          <button className="button" onClick={this.resetForm}>
-            Reset
-          </button>
+          <input className="button" type={'submit'} value={'Create card'} />
+          <input type={'reset'} className="button" value={'Reset'} />
         </fieldset>
       </form>
     );
