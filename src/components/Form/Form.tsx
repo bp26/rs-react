@@ -11,12 +11,13 @@ import {
   validateSwitcher,
 } from '../../utils/validation/validation';
 import CustomSwitcher from '../../components/CustomSwitcher/CustomSwitcher';
+import { joinClassNames } from '../../utils/utils';
 
 interface IFormProps {
   createCard: (card: IFormsCard) => void;
 }
 
-interface IFormState {
+interface IFormErrors {
   nameError: string;
   emailError: string;
   checkboxError: string;
@@ -24,6 +25,11 @@ interface IFormState {
   languageError: string;
   genderError: string;
   avatarError: string;
+}
+
+interface IFormState {
+  errors: IFormErrors;
+  notification: boolean;
 }
 
 class Form extends React.Component<IFormProps, IFormState> {
@@ -40,13 +46,16 @@ class Form extends React.Component<IFormProps, IFormState> {
   constructor(props: IFormProps) {
     super(props);
     this.state = {
-      nameError: '',
-      emailError: '',
-      checkboxError: '',
-      birthdayError: '',
-      languageError: '',
-      genderError: '',
-      avatarError: '',
+      errors: {
+        nameError: '',
+        emailError: '',
+        checkboxError: '',
+        birthdayError: '',
+        languageError: '',
+        genderError: '',
+        avatarError: '',
+      },
+      notification: false,
     };
 
     this.submit = this.submit.bind(this);
@@ -54,14 +63,31 @@ class Form extends React.Component<IFormProps, IFormState> {
   }
 
   private setError(type: string, error: string) {
-    this.setState((prevState) => ({
-      ...prevState,
-      [type]: error,
-    }));
+    this.setState((prevState) => {
+      const { errors } = prevState;
+      const updatedErrors = { ...errors, [type]: error };
+      return {
+        ...prevState,
+        errors: updatedErrors,
+      };
+    });
   }
 
   private resetForm() {
     this.form.current?.reset();
+  }
+
+  private showNotification() {
+    this.setState((prevState) => ({
+      ...prevState,
+      notification: true,
+    }));
+    setTimeout(() => {
+      this.setState((prevState) => ({
+        ...prevState,
+        notification: false,
+      }));
+    }, 4000);
   }
 
   private getAvatarSrc() {
@@ -117,6 +143,7 @@ class Form extends React.Component<IFormProps, IFormState> {
         date: this.birthday.current!.value,
       });
       this.resetForm();
+      this.showNotification();
     }
   }
 
@@ -130,18 +157,18 @@ class Form extends React.Component<IFormProps, IFormState> {
             name={input.name}
             id={input.key}
             reference={this[input.key as keyof this] as React.RefObject<HTMLInputElement>}
-            error={this.state[input.error as keyof IFormState]}
+            error={this.state.errors[input.error as keyof IFormErrors]}
           />
         ))}
         <CustomSelect
           name="Language:"
           reference={this.language}
-          error={this.state.languageError}
+          error={this.state.errors.languageError}
           data={LANGUAGE_DATA}
         />
         <CustomSwitcher
           name={'Choose your gender:'}
-          error={this.state.genderError}
+          error={this.state.errors.genderError}
           data={GENDER_DATA}
           reference={{
             firstOption: this.maleGender,
@@ -153,19 +180,27 @@ class Form extends React.Component<IFormProps, IFormState> {
           name={'Choose your avatar:'}
           id={'avatar'}
           reference={this.avatar}
-          error={this.state.avatarError}
+          error={this.state.errors.avatarError}
         />
         <CustomInput
           type={'checkbox'}
           name={'I consent to having my data processed'}
           id={'checkbox'}
           reference={this.checkbox}
-          error={this.state.checkboxError}
+          error={this.state.errors.checkboxError}
         />
         <fieldset className={styles.buttons}>
           <input className="button" type={'submit'} value={'Create card'} />
           <input type={'reset'} className="button" value={'Reset'} />
         </fieldset>
+        <div
+          className={joinClassNames(
+            styles.notification,
+            this.state.notification ? styles.visible : ''
+          )}
+        >
+          Card created!
+        </div>
       </form>
     );
   }

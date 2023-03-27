@@ -1,9 +1,24 @@
 .form {
-  padding: 20px 40px 20px 40px;
+  padding: 20px 40px 0px 40px;
   border-bottom: 1px solid slategray;
 }
 
 .buttons {
   display: flex;
   gap: 10px;
+}
+
+.notification {
+  width: fit-content;
+  font-size: 30px;
+  color: green;
+  visibility: hidden;
+  transition: opacity 1s;
+  opacity: 0;
+  margin-left: 10px;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
 }
