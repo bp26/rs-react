@@ -9,12 +9,19 @@ export const validateName = (
     return false;
   }
 
-  const [firstName, lastName] = name.split(' ');
+  const length = name.split(' ').length;
 
-  if (!firstName || !lastName) {
+  if (length < 2) {
     setter(ValidationError.NAME, `You should input both your first name and your last name`);
     return false;
   }
+
+  if (length > 2) {
+    setter(ValidationError.NAME, `You shouldn't input more than 2 words`);
+    return false;
+  }
+
+  const [firstName, lastName] = name.split(' ');
 
   if (firstName.length < 3 || lastName.length < 3) {
     setter(ValidationError.NAME, `First name and last name should be at least 3 character long`);
