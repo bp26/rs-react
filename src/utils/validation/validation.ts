@@ -1,4 +1,4 @@
-import { ValidationError } from '../types/enums';
+import { ValidationError } from '../../types/enums';
 
 export const validateName = (
   name: string | undefined,

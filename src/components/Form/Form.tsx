@@ -9,7 +9,7 @@ import {
   validateFile,
   validateSelect,
   validateSwitcher,
-} from '../../utils/validation';
+} from '../../utils/validation/validation';
 import CustomSwitcher from '../../components/CustomSwitcher/CustomSwitcher';
 
 interface IFormProps {

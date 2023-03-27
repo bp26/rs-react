@@ -1,4 +1,4 @@
-import { validateName, validateEmail, validateBirthday } from './validation';
+import { validateName, validateEmail, validateBirthday } from './validation/validation';
 
 export const SIMPLE_INPUTS = [
   {
