@@ -184,13 +184,15 @@ class Form extends React.Component<IFormProps, IFormState> {
             />
           </div>
         </div>
-        <CustomInput
-          type={'checkbox'}
-          name={'I consent to having my data processed'}
-          id={'checkbox'}
-          reference={this.checkbox}
-          error={this.state.errors.checkboxError}
-        />
+        <div className={styles.checkbox}>
+          <CustomInput
+            type={'checkbox'}
+            name={'I consent to having my data processed'}
+            id={'checkbox'}
+            reference={this.checkbox}
+            error={this.state.errors.checkboxError}
+          />
+        </div>
         <fieldset className={styles.buttons}>
           <input className="button" type={'submit'} value={'Create card'} />
           <input type={'reset'} className="button" value={'Reset'} />
