@@ -22,3 +22,16 @@
   visibility: visible;
   opacity: 1;
 }
+
+@media (min-width: 600px) {
+  .wrapper {
+    display: flex;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .wrapper {
+    display: block;
+  }
+}

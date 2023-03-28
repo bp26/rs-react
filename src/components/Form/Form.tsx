@@ -146,38 +146,44 @@ class Form extends React.Component<IFormProps, IFormState> {
   render() {
     return (
       <form onSubmit={this.submit} className={styles.form} noValidate={true} ref={this.form}>
-        {SIMPLE_INPUTS.map((input) => (
-          <CustomInput
-            key={input.id}
-            type={input.type}
-            name={input.name}
-            id={input.key}
-            reference={this[input.key as keyof this] as React.RefObject<HTMLInputElement>}
-            error={this.state.errors[input.error as keyof IFormErrors]}
-          />
-        ))}
-        <CustomSelect
-          name="Language:"
-          reference={this.language}
-          error={this.state.errors.languageError}
-          data={LANGUAGE_DATA}
-        />
-        <CustomSwitcher
-          name={'Choose your gender:'}
-          error={this.state.errors.genderError}
-          data={GENDER_DATA}
-          reference={{
-            firstOption: this.maleGender,
-            secondOption: this.femaleGender,
-          }}
-        />
-        <CustomInput
-          type={'file'}
-          name={'Choose your avatar:'}
-          id={'avatar'}
-          reference={this.avatar}
-          error={this.state.errors.avatarError}
-        />
+        <div className={styles.wrapper}>
+          <div className={styles.left}>
+            {SIMPLE_INPUTS.map((input) => (
+              <CustomInput
+                key={input.id}
+                type={input.type}
+                name={input.name}
+                id={input.key}
+                reference={this[input.key as keyof this] as React.RefObject<HTMLInputElement>}
+                error={this.state.errors[input.error as keyof IFormErrors]}
+              />
+            ))}
+          </div>
+          <div className={styles.right}>
+            <CustomSelect
+              name="Language:"
+              reference={this.language}
+              error={this.state.errors.languageError}
+              data={LANGUAGE_DATA}
+            />
+            <CustomSwitcher
+              name={'Choose your gender:'}
+              error={this.state.errors.genderError}
+              data={GENDER_DATA}
+              reference={{
+                firstOption: this.maleGender,
+                secondOption: this.femaleGender,
+              }}
+            />
+            <CustomInput
+              type={'file'}
+              name={'Choose your avatar:'}
+              id={'avatar'}
+              reference={this.avatar}
+              error={this.state.errors.avatarError}
+            />
+          </div>
+        </div>
         <CustomInput
           type={'checkbox'}
           name={'I consent to having my data processed'}
