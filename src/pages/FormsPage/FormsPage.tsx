@@ -24,7 +24,9 @@ class FormsPage extends React.Component<Record<string, never>, IFormsPageState> 
   render() {
     return (
       <div className={joinClassNames(styles.forms, 'page')}>
-        <Form createCard={this.createCard.bind(this)} />
+        <div className={styles.formwrapper}>
+          <Form createCard={this.createCard.bind(this)} />
+        </div>
         <div className={styles.list}>
           {this.state.cards.map((item, index) => (
             <FormsCard item={item} key={index} />

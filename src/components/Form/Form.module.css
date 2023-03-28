@@ -1,6 +1,5 @@
 .form {
-  padding: 20px 40px 0px 40px;
-  border-bottom: 1px solid slategray;
+  width: fit-content;
 }
 
 .buttons {
