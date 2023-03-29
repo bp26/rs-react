@@ -1,64 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { joinClassNames } from '../../utils/utils';
 import styles from './Search.module.css';
 
-interface ISearchState {
-  query: string;
-}
+const Search = () => {
+  const [query, setQuery] = useState(localStorage.getItem('query') || '');
+  const queryRef = useRef<string>('');
 
-class Search extends React.Component<Record<string, never>, ISearchState> {
-  constructor(props: Record<string, never>) {
-    super(props);
-    this.state = {
-      query: this.getLSQuery(),
+  useEffect(() => {
+    return () => {
+      queryRef.current = query;
     };
+  }, [query]);
 
-    this.onChange = this.onChange.bind(this);
-    this.submit = this.submit.bind(this);
-    this.setLSQuery = this.setLSQuery.bind(this);
-  }
+  useEffect(() => {
+    const setLocalStorage = () => {
+      localStorage.setItem('query', queryRef.current);
+    };
+    window.onbeforeunload = () => setLocalStorage();
 
-  public componentDidMount(): void {
-    window.onbeforeunload = () => this.setLSQuery();
-  }
+    return () => {
+      setLocalStorage();
+    };
+  }, []);
 
-  public componentWillUnmount(): void {
-    this.setLSQuery();
-    window.onbeforeunload = () => null;
-  }
+  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setQuery(e.currentTarget.value);
+  };
 
-  private getLSQuery(): string {
-    const query = localStorage.getItem('query');
-    return query ? query : '';
-  }
-
-  private setLSQuery(): void {
-    localStorage.setItem('query', this.state.query);
-  }
-
-  private onChange(e: React.FormEvent<HTMLInputElement>) {
-    this.setState({ query: e.currentTarget.value });
-  }
-
-  private submit(e: React.FormEvent<HTMLFormElement>) {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(this.state.query);
-  }
+  };
 
-  public render() {
-    return (
-      <form className={styles.search} onSubmit={this.submit}>
-        <input
-          className={joinClassNames(styles.input, 'input')}
-          type="text"
-          value={this.state.query}
-          onChange={this.onChange}
-          data-testid="search-input"
-        />
-        <input className={'button'} type="submit" value="Submit" />
-      </form>
-    );
-  }
-}
+  return (
+    <form className={styles.search} onSubmit={onSubmit}>
+      <input
+        className={joinClassNames(styles.input, 'input')}
+        type="text"
+        value={query}
+        onChange={onChange}
+        data-testid="search-input"
+      />
+      <input className={'button'} type="submit" value="Submit" />
+    </form>
+  );
+};
 
 export default Search;
