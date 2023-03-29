@@ -6,7 +6,7 @@ import characters from '../../assets/data/characters';
 
 describe('CardsList', () => {
   it('Renders card image', () => {
-    render(<CardsList data={characters} />);
+    render(<CardsList cards={characters} />);
     const items = screen.getAllByTestId('cardsList-item');
     expect(items.length === characters.length);
   });
