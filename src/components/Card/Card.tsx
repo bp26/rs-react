@@ -8,34 +8,28 @@ import alienImage from '../../assets/images/alien.png';
 import humanImage from '../../assets/images/human.png';
 
 interface ICardProps {
-  item: IMainCard;
+  card: IMainCard;
 }
 
-class Card extends React.Component<ICardProps> {
-  constructor(props: ICardProps) {
-    super(props);
-  }
-
-  public render() {
-    return (
-      <div className={styles.card}>
-        <img className={styles.image} src={this.props.item.image} data-testid="card-image"></img>
-        <div className={styles.name} data-testid="card-name">
-          {this.props.item.name}
-        </div>
-        <div className={styles.bottom}>
-          <img
-            className={styles.bottomImage}
-            src={this.props.item.status === CharacterStatus.ALIVE ? aliveImage : deadImage}
-          ></img>
-          <img
-            className={styles.bottomImage}
-            src={this.props.item.species === CharacterSpecies.HUMAN ? humanImage : alienImage}
-          ></img>
-        </div>
+const Card = ({ card }: ICardProps) => {
+  return (
+    <div className={styles.card}>
+      <img className={styles.image} src={card.image} data-testid="card-image"></img>
+      <div className={styles.name} data-testid="card-name">
+        {card.name}
       </div>
-    );
-  }
-}
+      <div className={styles.bottom}>
+        <img
+          className={styles.bottomImage}
+          src={card.status === CharacterStatus.ALIVE ? aliveImage : deadImage}
+        ></img>
+        <img
+          className={styles.bottomImage}
+          src={card.species === CharacterSpecies.HUMAN ? humanImage : alienImage}
+        ></img>
+      </div>
+    </div>
+  );
+};
 
 export default Card;
