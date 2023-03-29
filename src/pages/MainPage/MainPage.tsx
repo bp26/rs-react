@@ -9,7 +9,7 @@ const MainPage = () => {
   return (
     <div className={joinClassNames(styles.main, 'page')}>
       <Search />
-      <CardsList data={characters} />
+      <CardsList cards={characters} />
     </div>
   );
 };

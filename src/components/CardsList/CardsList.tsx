@@ -4,25 +4,19 @@ import Card from '../Card/Card';
 import { IMainCard } from 'types/interfaces';
 
 interface ICardsListProps {
-  data: IMainCard[];
+  cards: IMainCard[];
 }
 
-class CardsList extends React.Component<ICardsListProps> {
-  constructor(props: ICardsListProps) {
-    super(props);
-  }
-
-  public render() {
-    return (
-      <ul className={styles.list}>
-        {this.props.data.map((item) => (
-          <li className={styles.item} key={item.id} data-testid="cardsList-item">
-            <Card item={item} />
-          </li>
-        ))}
-      </ul>
-    );
-  }
-}
+const CardsList = ({ cards }: ICardsListProps) => {
+  return (
+    <ul className={styles.list}>
+      {cards.map((card) => (
+        <li className={styles.item} key={card.id} data-testid="cardsList-item">
+          <Card card={card} />
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 export default CardsList;
