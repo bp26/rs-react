@@ -18,8 +18,8 @@ const FormsPage = () => {
         <Form createCard={createCard} />
       </div>
       <div className={styles.list}>
-        {cards.map((item, index) => (
-          <FormsCard item={item} key={index} />
+        {cards.map((card, index) => (
+          <FormsCard card={card} key={index} />
         ))}
       </div>
     </div>
