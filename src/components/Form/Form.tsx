@@ -12,24 +12,10 @@ import {
 } from '../../utils/validation/validation';
 import CustomSwitcher from '../../components/CustomSwitcher/CustomSwitcher';
 import { joinClassNames } from '../../utils/utils';
+import { useForm } from 'react-hook-form';
 
 interface IFormProps {
   createCard: (card: IFormsCard) => void;
-}
-
-interface IFormErrors {
-  nameError: string;
-  emailError: string;
-  checkboxError: string;
-  birthdayError: string;
-  languageError: string;
-  genderError: string;
-  avatarError: string;
-}
-
-interface IFormState {
-  errors: IFormErrors;
-  notification: boolean;
 }
 
 class Form extends React.Component<IFormProps, IFormState> {
@@ -145,20 +131,9 @@ class Form extends React.Component<IFormProps, IFormState> {
 
   render() {
     return (
-      <form onSubmit={this.submit} className={styles.form} noValidate={true} ref={this.form}>
+      <form onSubmit={handleSubmit()} className={styles.form} noValidate={true} ref={this.form}>
         <div className={styles.wrapper}>
-          <div className={styles.left}>
-            {SIMPLE_INPUTS.map((input) => (
-              <CustomInput
-                key={input.id}
-                type={input.type}
-                name={input.name}
-                id={input.key}
-                reference={this[input.key as keyof this] as React.RefObject<HTMLInputElement>}
-                error={this.state.errors[input.error as keyof IFormErrors]}
-              />
-            ))}
-          </div>
+          <div className={styles.left}></div>
           <div className={styles.right}>
             <CustomSelect
               name="Language:"
@@ -209,5 +184,72 @@ class Form extends React.Component<IFormProps, IFormState> {
     );
   }
 }
+
+interface IFormValues {}
+
+const Form = ({ createCard }: IFormProps) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onSubmit',
+  });
+
+  const onSubmit = () => {};
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.form} noValidate={true}>
+      <div className={styles.wrapper}>
+        <div className={styles.left}></div>
+        <div className={styles.right}>
+          <CustomSelect
+            name="Language:"
+            reference={this.language}
+            error={this.state.errors.languageError}
+            data={LANGUAGE_DATA}
+          />
+          <CustomSwitcher
+            name={'Choose your gender:'}
+            error={this.state.errors.genderError}
+            data={GENDER_DATA}
+            reference={{
+              firstOption: this.maleGender,
+              secondOption: this.femaleGender,
+            }}
+          />
+          <CustomInput
+            type={'file'}
+            name={'Choose your avatar:'}
+            id={'avatar'}
+            reference={this.avatar}
+            error={this.state.errors.avatarError}
+          />
+        </div>
+      </div>
+      <div className={styles.checkbox}>
+        <CustomInput
+          type={'checkbox'}
+          name={'I consent to having my data processed'}
+          id={'checkbox'}
+          reference={this.checkbox}
+          error={this.state.errors.checkboxError}
+        />
+      </div>
+      <fieldset className={styles.buttons}>
+        <input className="button" type={'submit'} value={'Create card'} />
+        <input type={'reset'} className="button" value={'Reset'} />
+      </fieldset>
+      <div
+        className={joinClassNames(
+          styles.notification,
+          this.state.notification ? styles.visible : ''
+        )}
+      >
+        Card created!
+      </div>
+    </form>
+  );
+};
 
 export default Form;
