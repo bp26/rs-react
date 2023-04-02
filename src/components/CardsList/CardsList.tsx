@@ -1,7 +1,11 @@
 import React from 'react';
 import styles from './CardsList.module.css';
 import Card from '../Card/Card';
-import { ICardsListProps } from 'types/interfaces';
+import { IMainCard } from 'types/interfaces';
+
+interface ICardsListProps {
+  data: IMainCard[];
+}
 
 class CardsList extends React.Component<ICardsListProps> {
   constructor(props: ICardsListProps) {

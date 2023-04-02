@@ -1,20 +1,4 @@
-export interface IHeaderState {
-  page: string;
-}
-
-export interface ISearchState {
-  query: string;
-}
-
-export interface ICardsListProps {
-  data: ICharacter[];
-}
-
-export interface ICardProps {
-  item: ICharacter;
-}
-
-export interface ICharacter {
+export interface IMainCard {
   id: number;
   name: string;
   status: string;
@@ -27,4 +11,18 @@ export interface ICharacter {
   };
   image: string;
   episode: string[];
+}
+
+export interface IFormsCard {
+  name: string;
+  email: string;
+  date: string;
+  language: string;
+  gender: string;
+  avatar: string;
+}
+
+export interface ISwitcherRef {
+  firstOption: React.RefObject<HTMLInputElement>;
+  secondOption: React.RefObject<HTMLInputElement>;
 }

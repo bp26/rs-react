@@ -1,0 +1,37 @@
+.form {
+  width: fit-content;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.notification {
+  width: fit-content;
+  font-size: 30px;
+  color: green;
+  visibility: hidden;
+  transition: opacity 1s;
+  opacity: 0;
+  margin-left: 10px;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (min-width: 600px) {
+  .wrapper {
+    display: flex;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .wrapper {
+    display: block;
+  }
+}

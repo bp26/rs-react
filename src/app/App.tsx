@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from './Header/Header';
+import Header from '../components/Header/Header';
 
 class App extends React.Component {
   constructor(props: Record<string, never>) {

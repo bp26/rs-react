@@ -1,6 +1,10 @@
 import React from 'react';
+import { joinClassNames } from '../../utils/utils';
 import styles from './Search.module.css';
-import { ISearchState } from 'types/interfaces';
+
+interface ISearchState {
+  query: string;
+}
 
 class Search extends React.Component<Record<string, never>, ISearchState> {
   constructor(props: Record<string, never>) {
@@ -45,13 +49,13 @@ class Search extends React.Component<Record<string, never>, ISearchState> {
     return (
       <form className={styles.search} onSubmit={this.submit}>
         <input
-          className={styles.input}
+          className={joinClassNames(styles.input, 'input')}
           type="text"
           value={this.state.query}
           onChange={this.onChange}
           data-testid="search-input"
         />
-        <input className={styles.button} type="submit" value="Submit" />
+        <input className={'button'} type="submit" value="Submit" />
       </form>
     );
   }

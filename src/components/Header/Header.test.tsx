@@ -14,12 +14,16 @@ describe('Header', () => {
 
     const main = screen.getByTestId('header-mainlink');
     const about = screen.getByTestId('header-aboutlink');
+    const forms = screen.getByTestId('header-formslink');
     const name = screen.getByTestId('header-name');
 
     expect(name).toHaveTextContent('Main');
 
     fireEvent.click(about);
     expect(name).toHaveTextContent('About');
+
+    fireEvent.click(forms);
+    expect(name).toHaveTextContent('Forms');
 
     fireEvent.click(main);
     expect(name).toHaveTextContent('Main');

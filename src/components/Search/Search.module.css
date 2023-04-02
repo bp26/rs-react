@@ -6,24 +6,6 @@
 .input {
   width: 500px;
   height: 30px;
-
-  padding-left: 10px;
-
-  border: 1px solid #991788;
-  border-radius: 10px;
-}
-
-.input:focus {
-  outline: none;
-}
-
-.button {
-  border-radius: 10px;
-  border: none;
-  width: 100px;
-
-  color: white;
-  background-color: #991788;
 }
 
 @media (max-width: 700px) {
