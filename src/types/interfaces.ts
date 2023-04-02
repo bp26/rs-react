@@ -21,8 +21,3 @@ export interface IFormsCard {
   gender: string;
   avatar: string;
 }
-
-export interface ISwitcherRef {
-  firstOption: React.RefObject<HTMLInputElement>;
-  secondOption: React.RefObject<HTMLInputElement>;
-}

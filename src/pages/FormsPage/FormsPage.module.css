@@ -35,6 +35,10 @@
     border-bottom: 0px;
     border-right: 1px solid slategray;
   }
+
+  .list {
+    flex-grow: 1;
+  }
 }
 
 @media (min-width: 1400px) {
