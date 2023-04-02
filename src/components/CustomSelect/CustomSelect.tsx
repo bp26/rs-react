@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './CustomSelect.module.css';
+import { UseFormRegisterReturn, FieldError } from 'react-hook-form';
 
 interface ICustomSelectProps {
   name: string;
-  reference: React.RefObject<HTMLSelectElement>;
-  error: string;
+  register: UseFormRegisterReturn;
+  error: FieldError | undefined;
   data: { value: string; id: number }[];
 }
 
@@ -15,7 +16,7 @@ const CustomSelect = (props: ICustomSelectProps) => {
         <label className={styles.label} htmlFor={props.name}>
           {props.name}
         </label>
-        <select ref={props.reference}>
+        <select {...props.register}>
           {props.data.map((option) => {
             return (
               <option key={option.id} value={option.value}>
@@ -25,7 +26,7 @@ const CustomSelect = (props: ICustomSelectProps) => {
           })}
         </select>
       </div>
-      <span className={styles.error}>{props.error}</span>
+      <span className={styles.error}>{props?.error && props.error.message}</span>
     </fieldset>
   );
 };
