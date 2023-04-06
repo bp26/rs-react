@@ -5,7 +5,7 @@ import Card from './Card';
 
 describe('Card', () => {
   it('Renders card image', () => {
-    const item = {
+    const card = {
       id: 8,
       name: 'Adjudicator Rick',
       status: 'Dead',
@@ -20,12 +20,12 @@ describe('Card', () => {
       created: '2017-11-04T20:03:34.737Z',
     };
 
-    render(<Card item={item} />);
+    render(<Card card={card} />);
 
     const image = screen.getByTestId('card-image');
     const name = screen.getByTestId('card-name');
 
-    expect(image).toHaveAttribute('src', item.image);
-    expect(name).toHaveTextContent(item.name);
+    expect(image).toHaveAttribute('src', card.image);
+    expect(name).toHaveTextContent(card.name);
   });
 });

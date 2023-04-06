@@ -5,19 +5,13 @@ import CardsList from '../../components/CardsList/CardsList';
 import characters from '../../assets/data/characters';
 import { joinClassNames } from '../../utils/utils';
 
-class MainPage extends React.Component {
-  constructor(props: Record<string, never>) {
-    super(props);
-  }
-
-  public render() {
-    return (
-      <div className={joinClassNames(styles.main, 'page')}>
-        <Search />
-        <CardsList data={characters} />
-      </div>
-    );
-  }
-}
+const MainPage = () => {
+  return (
+    <div className={joinClassNames(styles.main, 'page')}>
+      <Search />
+      <CardsList cards={characters} />
+    </div>
+  );
+};
 
 export default MainPage;

@@ -2,22 +2,18 @@ import { describe, it } from 'vitest';
 import { validateEmail } from './validation';
 
 describe('validateEmail', () => {
-  const setState = () => {
-    return;
-  };
-
   it('Returns true on correct input', () => {
     const email = 'bereza@gmail.com';
-    expect(validateEmail(email, setState)).toBe(true);
+    expect(validateEmail(email)).toBe(true);
   });
 
-  it('Returns false on no input', () => {
+  it('Returns error message on no input', () => {
     const email = '';
-    expect(validateEmail(email, setState)).toBe(false);
+    expect(typeof validateEmail(email)).toBe('string');
   });
 
-  it('Returns false on wrong input', () => {
+  it('Returns error message on wrong input', () => {
     const email = 'bereza.com';
-    expect(validateEmail(email, setState)).toBe(false);
+    expect(typeof validateEmail(email)).toBe('string');
   });
 });

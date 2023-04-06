@@ -2,17 +2,13 @@ import { describe, it } from 'vitest';
 import { validateCheckbox } from './validation';
 
 describe('validateCheckbox', () => {
-  const setState = () => {
-    return;
-  };
-
   it('Returns true on checked true', () => {
     const checked = true;
-    expect(validateCheckbox(checked, setState)).toBe(true);
+    expect(validateCheckbox(checked)).toBe(true);
   });
 
-  it('Returns false on checked false', () => {
+  it('Returns error message on checked false', () => {
     const checked = false;
-    expect(validateCheckbox(checked, setState)).toBe(false);
+    expect(typeof validateCheckbox(checked)).toBe('string');
   });
 });
