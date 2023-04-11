@@ -1,34 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { joinClassNames } from '../../utils/utils';
 import styles from './Search.module.css';
 
-const Search = () => {
-  const [query, setQuery] = useState(localStorage.getItem('query') || '');
-  const queryRef = useRef<string>('');
+interface ISearchProps {
+  query: string;
+  setQuery: (query: string) => void;
+}
 
-  useEffect(() => {
-    return () => {
-      queryRef.current = query;
-    };
-  }, [query]);
-
-  useEffect(() => {
-    const setLocalStorage = () => {
-      localStorage.setItem('query', queryRef.current);
-    };
-    window.onbeforeunload = () => setLocalStorage();
-
-    return () => {
-      setLocalStorage();
-    };
-  }, []);
-
+const Search = ({ query, setQuery }: ISearchProps) => {
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
     setQuery(e.currentTarget.value);
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    localStorage.setItem('query', query);
   };
 
   return (

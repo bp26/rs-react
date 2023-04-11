@@ -1,6 +1,10 @@
-export interface IMainCard {
+export interface ICard {
   id: number;
+}
+
+export interface IMainCard extends ICard {
   name: string;
+  gender: string;
   status: string;
   species: string;
   origin: {
