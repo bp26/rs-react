@@ -1,12 +1,12 @@
 body,
 html {
   margin: 0;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 #root,
 .app {
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 ul {
@@ -28,7 +28,7 @@ fieldset {
 
 .page {
   max-width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
 
   background-color: #2c3439;
   color: white;
