@@ -5,6 +5,7 @@ import CardsList from '../../components/CardsList/CardsList';
 import { joinClassNames } from '../../utils/utils';
 import { IMainCard } from 'types/interfaces';
 import useFetchByName from '../../hooks/useFetchByName';
+import CardModal from '../../components/CardModal/CardModal';
 
 const MainPage = () => {
   const [query, setQuery] = useState(localStorage.getItem('query') || '');
