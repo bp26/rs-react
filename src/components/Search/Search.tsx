@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { joinClassNames } from '../../utils/utils';
 import styles from './Search.module.css';
 
@@ -8,13 +8,13 @@ interface ISearchProps {
 }
 
 const Search = ({ query, setQuery }: ISearchProps) => {
-  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setQuery(e.currentTarget.value);
-  };
+  const searchInput = useRef<HTMLInputElement>(null);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    localStorage.setItem('query', query);
+    const value = searchInput.current?.value || '';
+    localStorage.setItem('query', value);
+    setQuery(value);
   };
 
   return (
@@ -22,8 +22,8 @@ const Search = ({ query, setQuery }: ISearchProps) => {
       <input
         className={joinClassNames(styles.input, 'input')}
         type="text"
-        value={query}
-        onChange={onChange}
+        defaultValue={query}
+        ref={searchInput}
         data-testid="search-input"
       />
       <input className={'button'} type="submit" value="Submit" />

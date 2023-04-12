@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ICard } from 'types/interfaces';
 
-const useFetch = <T extends ICard>(link: string, query: string) => {
+const useFetchByName = <T extends ICard>(link: string, query: string) => {
   const [data, setData] = useState<T[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -11,6 +11,7 @@ const useFetch = <T extends ICard>(link: string, query: string) => {
       try {
         const res = await fetch(
           link +
+            '?' +
             new URLSearchParams({
               name: query,
             })
@@ -20,10 +21,11 @@ const useFetch = <T extends ICard>(link: string, query: string) => {
         }
         const data = await res.json();
         setData(data.results);
-        setIsLoading(false);
       } catch (error) {
-        setIsLoading(false);
+        setData([]);
         setIsError(true);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -39,4 +41,4 @@ const useFetch = <T extends ICard>(link: string, query: string) => {
   };
 };
 
-export default useFetch;
+export default useFetchByName;
