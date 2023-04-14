@@ -4,16 +4,16 @@ import styles from './CardModal.module.css';
 import { IMainCard } from 'types/interfaces';
 
 interface Props {
-  closeModal: () => void;
-  id: number;
+  openModal: (setOpen: boolean, cardId: number) => void;
+  cardId: number;
 }
 
-const CardModal = ({ closeModal, id }: Props) => {
+const CardModal = ({ openModal, cardId }: Props) => {
   const [data, setData] = useState<IMainCard>();
 
   useEffect(() => {
     const loadData = async () => {
-      const res = await fetch('https://rickandmortyapi.com/api/character/' + id);
+      const res = await fetch('https://rickandmortyapi.com/api/character/' + cardId);
       const data = await res.json();
       setData(data);
     };
