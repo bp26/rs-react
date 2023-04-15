@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './CardsList.module.css';
-import Card from '../Card/Card';
+import Card from './Card/Card';
 import { IMainCard } from 'types/interfaces';
 
 interface ICardsListProps {
