@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { IFormsCard } from 'types/interfaces';
 import styles from './Form.module.css';
-import CustomInput from '../CustomInput/CustomInput';
+import CustomInput from './CustomInput/CustomInput';
 import { LANGUAGE_DATA, GENDER_DATA } from '../../utils/constants';
-import CustomSelect from '../../components/CustomSelect/CustomSelect';
-import CustomSwitcher from '../../components/CustomSwitcher/CustomSwitcher';
+import CustomSelect from './CustomSelect/CustomSelect';
+import CustomSwitcher from './CustomSwitcher/CustomSwitcher';
 import { joinClassNames } from '../../utils/utils';
 import { useForm } from 'react-hook-form';
 import {
