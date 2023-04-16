@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react';
 import styles from './CardModal.module.css';
-import { IMainCard } from 'types/interfaces';
-import useFetchById from '../../../hooks/useFetchById';
-import { apiLink } from '../../../config/config';
 import { joinClassNames } from '../../../utils/utils';
 import Spinner from '../../../components/Spinner/Spinner';
+import { useGetCharacterByIdQuery } from '../../../store/features/apiSlice';
 
 interface Props {
   closeModal: () => void;
@@ -12,7 +10,7 @@ interface Props {
 }
 
 const CardModal = ({ closeModal, cardId }: Props) => {
-  const { data: card, isLoading } = useFetchById<IMainCard>(apiLink, cardId);
+  const { data: card, isLoading } = useGetCharacterByIdQuery(cardId);
 
   let content;
   if (isLoading) {
