@@ -24,7 +24,7 @@ const Search = () => {
         ref={searchInput}
         data-testid="search-input"
       />
-      <input className={'button'} type="submit" value="Submit" />
+      <input className={'button'} type="submit" value="Submit" data-testid="search-submit" />
     </form>
   );
 };
