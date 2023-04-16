@@ -13,7 +13,7 @@ describe('validateBirthday', () => {
   });
 
   it('Returns error message on later date than the current one', () => {
-    const date = '2023-04-09';
+    const date = '2030-04-09';
     expect(typeof validateBirthday(date)).toBe('string');
   });
 });
