@@ -12,16 +12,3 @@
 
   background: rgba(0, 0, 0, 0.5);
 }
-
-.modal {
-  width: 700px;
-  min-height: 200px;
-  background-color: white;
-  border-radius: 20px;
-}
-
-@media (max-width: 800px) {
-  .modal {
-    width: auto;
-  }
-}
