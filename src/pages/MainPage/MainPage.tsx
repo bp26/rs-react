@@ -8,6 +8,7 @@ import useFetchByQuery from '../../hooks/useFetchByQuery';
 import CardModal from '../../components/Modal/CardModal/CardModal';
 import Modal from '../../components/Modal/Modal';
 import { apiLink } from '../../config/config';
+import Spinner from '../../components/Spinner/Spinner';
 
 const MainPage = () => {
   const [query, setQuery] = useState(localStorage.getItem('query') || '');
@@ -24,9 +25,9 @@ const MainPage = () => {
     setModalOpen(false);
   };
 
-  let content;
+  let content = <Spinner />;
   if (isLoading) {
-    content = <div>Loading...</div>;
+    content = <Spinner />;
   } else if (isError) {
     content = <div>Error! Please change search query. </div>;
   } else if (cards) {

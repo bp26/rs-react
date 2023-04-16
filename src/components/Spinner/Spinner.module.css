@@ -1,0 +1,19 @@
+.spinner {
+  margin: auto auto;
+  width: 20%;
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+  border: 20px solid gold;
+  border-top: 20px solid white;
+  animation: circle 3s linear infinite;
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

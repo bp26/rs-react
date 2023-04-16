@@ -4,6 +4,7 @@ import { IMainCard } from 'types/interfaces';
 import useFetchById from '../../../hooks/useFetchById';
 import { apiLink } from '../../../config/config';
 import { joinClassNames } from '../../../utils/utils';
+import Spinner from '../../../components/Spinner/Spinner';
 
 interface Props {
   closeModal: () => void;
@@ -15,7 +16,7 @@ const CardModal = ({ closeModal, cardId }: Props) => {
 
   let content;
   if (isLoading) {
-    content = <div>Loading...</div>;
+    content = <Spinner />;
   } else if (card) {
     content = (
       <Fragment>
