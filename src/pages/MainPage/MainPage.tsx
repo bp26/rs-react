@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styles from './MainPage.module.css';
 import Search from '../../components/Search/Search';
 import CardsList from '../../components/CardsList/CardsList';
@@ -9,9 +10,10 @@ import CardModal from '../../components/Modal/CardModal/CardModal';
 import Modal from '../../components/Modal/Modal';
 import { apiLink } from '../../config/config';
 import Spinner from '../../components/Spinner/Spinner';
+import { selectQuery } from '../../store/features/searchSlice';
 
 const MainPage = () => {
-  const [query, setQuery] = useState(localStorage.getItem('query') || '');
+  const query = useSelector(selectQuery);
   const [isModalOpen, setModalOpen] = useState(false);
   const [cardId, setCardId] = useState(1);
   const { data: cards, isLoading, isError } = useFetchByQuery<IMainCard>(apiLink, 'name', query);
@@ -36,7 +38,7 @@ const MainPage = () => {
 
   return (
     <div className={joinClassNames(styles.main, 'page')}>
-      <Search query={query} setQuery={setQuery} />
+      <Search />
       {content}
       {isModalOpen && (
         <Modal closeModal={closeModal}>
