@@ -20,6 +20,10 @@ const MainPage = () => {
     setModalOpen(true);
   };
 
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   let content;
   if (isLoading) {
     content = <div>Loading...</div>;
@@ -34,8 +38,8 @@ const MainPage = () => {
       <Search query={query} setQuery={setQuery} />
       {content}
       {isModalOpen && (
-        <Modal>
-          <CardModal setModalOpen={setModalOpen} cardId={cardId} />
+        <Modal closeModal={closeModal}>
+          <CardModal closeModal={closeModal} cardId={cardId} />
         </Modal>
       )}
     </div>

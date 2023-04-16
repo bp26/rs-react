@@ -6,11 +6,11 @@ import { apiLink } from '../../../config/config';
 import { joinClassNames } from '../../../utils/utils';
 
 interface Props {
-  setModalOpen: (setOpen: boolean) => void;
+  closeModal: () => void;
   cardId: number;
 }
 
-const CardModal = ({ setModalOpen, cardId }: Props) => {
+const CardModal = ({ closeModal, cardId }: Props) => {
   const { data: card, isLoading } = useFetchById<IMainCard>(apiLink, cardId);
 
   let content;
@@ -19,7 +19,7 @@ const CardModal = ({ setModalOpen, cardId }: Props) => {
   } else if (card) {
     content = (
       <Fragment>
-        <span className={joinClassNames(styles.close)} onClick={() => setModalOpen(false)}></span>
+        <span className={joinClassNames(styles.close)} onClick={closeModal}></span>
         <div className={styles.top}>
           <img className={styles.image} src={card.image} data-testid="card-image"></img>
         </div>
