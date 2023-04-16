@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './CustomInput.module.css';
-import { joinClassNames } from '../../utils/utils';
+import { joinClassNames } from '../../../utils/utils';
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 
 interface ICustomInputProps {
