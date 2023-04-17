@@ -29,7 +29,7 @@ const MainPage = () => {
   if (isLoading) {
     content = <Spinner />;
   } else if (isError) {
-    content = <div>Error! Please change search query. </div>;
+    content = <div data-testid="mainpage-error">Error! Please change search query. </div>;
   } else if (data.results) {
     content = <CardsList cards={data.results} openModal={openModal} />;
   }
