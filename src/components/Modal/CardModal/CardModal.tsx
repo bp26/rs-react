@@ -10,15 +10,21 @@ interface Props {
 }
 
 const CardModal = ({ closeModal, cardId }: Props) => {
-  const { data: card, isLoading } = useGetCharacterByIdQuery(cardId);
+  const { data: card, isLoading, isError } = useGetCharacterByIdQuery(cardId);
 
   let content;
   if (isLoading) {
     content = <Spinner />;
+  } else if (isError) {
+    content = <div data-testid="cardmodal-error">Error!</div>;
   } else if (card) {
     content = (
       <Fragment>
-        <span className={joinClassNames(styles.close)} onClick={closeModal}></span>
+        <span
+          className={joinClassNames(styles.close)}
+          onClick={closeModal}
+          data-testid="cardmodal-name"
+        ></span>
         <div className={styles.top}>
           <img className={styles.image} src={card.image} data-testid="card-image"></img>
         </div>
