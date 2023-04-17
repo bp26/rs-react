@@ -5,9 +5,14 @@ import { createStore } from '../../store/store';
 import { renderWithProvider } from '../../utils/utils';
 import Search from './Search';
 
+let store = createStore();
+
 describe('Search', () => {
+  afterEach(() => {
+    store = createStore();
+  });
+
   it('Saves search query on submit and returns on mount', () => {
-    const store = createStore();
     const { unmount } = renderWithProvider(<Search />, store);
     const input = screen.getByTestId('search-input');
     const submit = screen.getByTestId('search-submit');
@@ -23,7 +28,6 @@ describe('Search', () => {
   });
 
   it(`Doesn't save search query on change`, () => {
-    const store = createStore();
     const { unmount } = renderWithProvider(<Search />, store);
     const input = screen.getByTestId('search-input');
     fireEvent.input(input, {
