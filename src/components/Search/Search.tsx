@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { joinClassNames } from '../../utils/utils';
 import styles from './Search.module.css';
-import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectQuery, setQuery } from '../../store/features/searchSlice';
 
 const Search = () => {
