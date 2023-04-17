@@ -14,7 +14,7 @@ const MainPage = () => {
   const query = useSelector(selectQuery);
   const [isModalOpen, setModalOpen] = useState(false);
   const [cardId, setCardId] = useState(1);
-  const { data, isLoading, isError } = useGetCharactersByNameQuery(query);
+  const { data, isLoading, isError, isFetching } = useGetCharactersByNameQuery(query);
 
   const openModal = (cardId: number) => {
     setCardId(cardId);
@@ -25,8 +25,8 @@ const MainPage = () => {
     setModalOpen(false);
   };
 
-  let content = <Spinner />;
-  if (isLoading) {
+  let content;
+  if (isLoading || isFetching) {
     content = <Spinner />;
   } else if (isError) {
     content = <div data-testid="mainpage-error">Error! Please change search query. </div>;
