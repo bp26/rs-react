@@ -1,21 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { joinClassNames } from '../../utils/utils';
 import styles from './FormsPage.module.css';
 import Form from '../../components/Form/Form';
-import { IFormsCard } from 'types/interfaces';
 import FormsCard from '../../components/FormsCard/FormsCard';
+import { useSelector } from 'react-redux';
+import { selectCards } from '../../store/features/formSlice';
 
 const FormsPage = () => {
-  const [cards, setCards] = useState<IFormsCard[]>([]);
-
-  const createCard = (card: IFormsCard) => {
-    setCards((prevState) => [...prevState, card]);
-  };
+  const cards = useSelector(selectCards);
 
   return (
     <div className={joinClassNames(styles.forms, 'page')}>
       <div className={styles.formwrapper}>
-        <Form createCard={createCard} />
+        <Form />
       </div>
       <div className={styles.list}>
         {cards.map((card, index) => (

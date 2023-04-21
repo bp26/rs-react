@@ -11,7 +11,7 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/tests/setup.ts',
     coverage: {
-      exclude: ['src/index.tsx', 'src/types', 'src/vite-env.d.ts'],
+      exclude: ['src/index.tsx', 'src/types', 'src/vite-env.d.ts', 'src/mocks'],
       all: true,
       src: ['src'],
       provider: 'c8',

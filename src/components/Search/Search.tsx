@@ -1,20 +1,18 @@
 import React, { useRef } from 'react';
 import { joinClassNames } from '../../utils/utils';
 import styles from './Search.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectQuery, setQuery } from '../../store/features/searchSlice';
 
-interface ISearchProps {
-  query: string;
-  setQuery: (query: string) => void;
-}
-
-const Search = ({ query, setQuery }: ISearchProps) => {
+const Search = () => {
   const searchInput = useRef<HTMLInputElement>(null);
+  const query = useSelector(selectQuery);
+  const dispatch = useDispatch();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const value = searchInput.current?.value || '';
-    localStorage.setItem('query', value);
-    setQuery(value);
+    dispatch(setQuery(value));
   };
 
   return (
@@ -26,7 +24,7 @@ const Search = ({ query, setQuery }: ISearchProps) => {
         ref={searchInput}
         data-testid="search-input"
       />
-      <input className={'button'} type="submit" value="Submit" />
+      <input className={'button'} type="submit" value="Submit" data-testid="search-submit" />
     </form>
   );
 };

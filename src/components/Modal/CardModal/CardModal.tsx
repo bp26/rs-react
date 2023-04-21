@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react';
 import styles from './CardModal.module.css';
-import { IMainCard } from 'types/interfaces';
-import useFetchById from '../../../hooks/useFetchById';
-import { apiLink } from '../../../config/config';
 import { joinClassNames } from '../../../utils/utils';
 import Spinner from '../../../components/Spinner/Spinner';
+import { useGetCharacterByIdQuery } from '../../../store/features/apiSlice';
 
 interface Props {
   closeModal: () => void;
@@ -12,15 +10,21 @@ interface Props {
 }
 
 const CardModal = ({ closeModal, cardId }: Props) => {
-  const { data: card, isLoading } = useFetchById<IMainCard>(apiLink, cardId);
+  const { data: card, isLoading, isError } = useGetCharacterByIdQuery(cardId);
 
   let content;
   if (isLoading) {
     content = <Spinner />;
+  } else if (isError) {
+    content = <div data-testid="cardmodal-error">Error!</div>;
   } else if (card) {
     content = (
       <Fragment>
-        <span className={joinClassNames(styles.close)} onClick={closeModal}></span>
+        <span
+          className={joinClassNames(styles.close)}
+          onClick={closeModal}
+          data-testid="cardmodal-name"
+        ></span>
         <div className={styles.top}>
           <img className={styles.image} src={card.image} data-testid="card-image"></img>
         </div>

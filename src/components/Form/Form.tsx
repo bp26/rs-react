@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { IFormsCard } from 'types/interfaces';
+import { useDispatch } from 'react-redux';
+import { setCards } from '../../store/features/formSlice';
 import styles from './Form.module.css';
 import CustomInput from './CustomInput/CustomInput';
 import { LANGUAGE_DATA, GENDER_DATA } from '../../utils/constants';
@@ -17,10 +18,6 @@ import {
   validateSwitcher,
 } from '../../utils/validation/validation';
 
-interface IFormProps {
-  createCard: (card: IFormsCard) => void;
-}
-
 interface IFormValues {
   name: string;
   email: string;
@@ -31,8 +28,9 @@ interface IFormValues {
   avatar: FileList;
 }
 
-const Form = ({ createCard }: IFormProps) => {
+const Form = () => {
   const [notification, setNotification] = useState(false);
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -52,14 +50,15 @@ const Form = ({ createCard }: IFormProps) => {
   };
 
   const onSubmit = (data: IFormValues) => {
-    createCard({
+    const card = {
       name: data.name,
       email: data.email,
       date: data.birthday,
       language: data.language,
       gender: data.gender,
       avatar: URL.createObjectURL(data.avatar[0]),
-    });
+    };
+    dispatch(setCards(card));
     showNotification();
     reset();
   };
